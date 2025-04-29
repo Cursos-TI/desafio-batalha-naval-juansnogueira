@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+#define TAMANHO 5
+
+// Função para exibir uma matriz
+void exibirMatriz(int matriz[TAMANHO][TAMANHO], const char* nome) {
+    printf("\nHabilidade: %s\n", nome);
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    // Matrizes para as habilidades
+    int cone[TAMANHO][TAMANHO] = {0};
+    int cruz[TAMANHO][TAMANHO] = {0};
+    int octaedro[TAMANHO][TAMANHO] = {0};
+
+    // Preenchendo habilidade em cone
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            if ((i == 0 && j == 2) ||
+                (i == 1 && j >= 1 && j <= 3) ||
+                (i == 2 && j >= 0 && j <= 4)) {
+                cone[i][j] = 1;
+            }
+        }
+    }
+
+    // Preenchendo habilidade em cruz
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            if (j == 2 || i == 1) {
+                cruz[i][j] = 1;
+            }
+        }
+    }
+
+    // Preenchendo habilidade em octaedro
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            if ((i == 0 && j == 2) ||
+                (i == 1 && j >= 1 && j <= 3) ||
+                (i == 2 && j == 2)) {
+                octaedro[i][j] = 1;
+            }
+        }
+    }
+
+    // Exibindo as habilidades
+    exibirMatriz(cone, "Cone");
+    exibirMatriz(cruz, "Cruz");
+    exibirMatriz(octaedro, "Octaedro");
+
+    return 0;
+}
